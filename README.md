@@ -25,3 +25,11 @@ in x-ctu aggiungere il primo xbee:
 
 1. channel must be the same for each device: C
 1. pan ID must be the same for each device: 6599
+
+| Setting	| Acronym	| XBee Node1	| XBee Node 2
+| --- | --- | --- | --- |
+| Channel	| CH | C | C | 
+| PAN ID	| ID | 6599 | 6599 | 
+| Destination Address High	| DH | 0 | 0 | 
+| Destination Address Low	| DL | 1 | 0 | 
+| 16-bit Source Address	| MY | 0 | 1 | 
