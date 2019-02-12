@@ -33,3 +33,39 @@ in x-ctu aggiungere il primo xbee:
 | Destination Address High	| DH | 0 | 0 | 
 | Destination Address Low	| DL | 1 | 0 | 
 | 16-bit Source Address	| MY | 0 | 1 | 
+
+## in the arduino (connected to a xbee)
+if we send to the xbee the byte 0x31 (ASCII "1") it turns ON pin13
+if we send to the xbee the byte 0x32 (ASCII "2") it turns OFF pin13
+
+transfer the code to the arduino (remember to select usb in the xbee shild during transfer) 
+
+
+'''
+void setup() {
+  // put your setup code here, to run once:
+
+  Serial.begin(9600);
+
+  pinMode(13,OUTPUT);
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  if (Serial.available() > 0) {
+    unsigned char a = Serial.read();
+    if (a == 0x31) {
+      digitalWrite(13,HIGH);  
+    }
+    if (a == 0x32) {
+      digitalWrite(13,LOW);  
+    }
+  }
+}
+'''
+
+## test
+
+using xctu send "1" to the xbee connected in USB, the xbees communicate each other and the led13 should turns ON, if you write "2" on the xctu console the led should turns off.
