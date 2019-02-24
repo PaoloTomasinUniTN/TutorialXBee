@@ -1,7 +1,5 @@
 # TutorialXBee
 Simple tutorial on how to connect and communicate between xbee
-
-#
 I'm following tutorial at page: https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/all
 
 ## install fdti driver
@@ -41,7 +39,7 @@ if we send to the xbee the byte 0x32 (ASCII "2") it turns OFF pin13
 transfer the code to the arduino (remember to select usb in the xbee shild during transfer) 
 
 
-'''
+```
 void setup() {
   // put your setup code here, to run once:
 
@@ -64,8 +62,28 @@ void loop() {
     }
   }
 }
-'''
+```
 
 ## test
 
 using xctu send "1" to the xbee connected in USB, the xbees communicate each other and the led13 should turns ON, if you write "2" on the xctu console the led should turns off.
+
+
+# Connecting in API mode using DiGiMesh
+
+Nodes must be in the same CHANNEL and in the same PAN-ID.
+The destination address must be the broadcast (DH=0, DL=FFFF).
+The source address has to be 0.
+with node identifier you can define a name.
+API mode has to be enabled putting AP=1.
+
+| Setting	| Acronym	| XBee Node1	| XBee Node 2
+| --- | --- | --- | --- |
+| Channel	| CH | C | C | 
+| PAN ID	| ID | D161 | D161 | 
+| Destination Address High	| DH | 0 | 0 | 
+| Destination Address Low	| DL | FFFF | FFFF | 
+| 16-bit Source Address	| MY | 0 | 0 | 
+| Node identifier	| NI | 0 | 0 | 
+| API enable	| AP | 1 | 1 |
+| Power level	| PL | 4 | 4 |
